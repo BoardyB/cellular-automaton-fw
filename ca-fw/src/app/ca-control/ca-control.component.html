@@ -1,0 +1,33 @@
+<mat-card class="background-card">
+  <mat-toolbar class="ca-control-toolbar">
+    <span class="ca-control-header"><strong>Cellular Automata Control</strong></span>
+  </mat-toolbar>
+  <ca-fw-pattern-grid [pattern]="pattern"></ca-fw-pattern-grid>
+  <mat-card class="control-card-padding">
+    <div class="row">
+      <div class="col-md-1 button-indent">
+        <button mat-raised-button (click)="reset()">Reset</button>
+      </div>
+      <div class="col-md-1 button-indent">
+        <button mat-raised-button (click)="nextGeneration()">Next generation</button>
+      </div>
+      <div class="col-md-1 offset-md-1 button-indent">
+        <button mat-raised-button (click)="run()">Run</button>
+      </div>
+      <div class="col-md-1 button-indent">
+        <button mat-raised-button (click)="stop()">Stop</button>
+      </div>
+      <div class="col-md-1 generation-counter-indent">
+        <span class="mat-raised-button">Current Generation: {{ generationCounter }}</span>
+      </div>
+      <div class="col-md-2 offset-md-4">
+        <mat-form-field>
+          <mat-label>Generation step interval</mat-label>
+          <mat-select [(ngModel)]="stepDuration">
+            <mat-option *ngFor="let interval of generationStepIntervals" [value]="interval">{{interval}} ms</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card>
+</mat-card>
